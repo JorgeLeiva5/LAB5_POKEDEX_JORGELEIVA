@@ -48,10 +48,40 @@ namespace Lab05JorgeLeiva1249821 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::ListBox^ listBox1;
+	private: System::Windows::Forms::TabControl^ tabControl1;
 	protected:
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::TabPage^ tabPage1;
+	private: System::Windows::Forms::TabPage^ tabPage2;
+
+	private: System::Windows::Forms::ListBox^ lbx_Generacion_Ordenados;
+
+	private: System::Windows::Forms::ListBox^ lbx_Generacion_Desordenados;
+	private: System::Windows::Forms::Button^ btn_Generacion_OrdenarPokemones;
+
+
+
+	private: System::Windows::Forms::ComboBox^ cmbx_Generacion_Ordenamientos;
+
+
+
+	private: System::Windows::Forms::ListBox^ lbx_NatNum_Desordenados;
+	private: System::Windows::Forms::Button^ btn_NatNum_OrdenarPokemones;
+
+
+
+	private: System::Windows::Forms::ListBox^ lbx_NatNum_Ordenados;
+	private: System::Windows::Forms::ComboBox^ cmbx_NatNum_Ordenamientos;
+
+	private: System::Windows::Forms::Label^ label2;
+
+
+
+
+
+	protected:
+
+
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -70,73 +100,181 @@ namespace Lab05JorgeLeiva1249821 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = (gcnew System::ComponentModel::Container());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
+			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->cmbx_NatNum_Ordenamientos = (gcnew System::Windows::Forms::ComboBox());
+			this->btn_NatNum_OrdenarPokemones = (gcnew System::Windows::Forms::Button());
+			this->lbx_NatNum_Ordenados = (gcnew System::Windows::Forms::ListBox());
+			this->lbx_NatNum_Desordenados = (gcnew System::Windows::Forms::ListBox());
+			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->cmbx_Generacion_Ordenamientos = (gcnew System::Windows::Forms::ComboBox());
+			this->btn_Generacion_OrdenarPokemones = (gcnew System::Windows::Forms::Button());
+			this->lbx_Generacion_Ordenados = (gcnew System::Windows::Forms::ListBox());
+			this->lbx_Generacion_Desordenados = (gcnew System::Windows::Forms::ListBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->tabControl1->SuspendLayout();
+			this->tabPage1->SuspendLayout();
+			this->tabPage2->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// listBox1
+			// tabControl1
 			// 
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->ItemHeight = 16;
-			this->listBox1->Location = System::Drawing::Point(90, 13);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(197, 532);
-			this->listBox1->TabIndex = 0;
+			this->tabControl1->Controls->Add(this->tabPage1);
+			this->tabControl1->Controls->Add(this->tabPage2);
+			this->tabControl1->Location = System::Drawing::Point(12, 73);
+			this->tabControl1->Name = L"tabControl1";
+			this->tabControl1->SelectedIndex = 0;
+			this->tabControl1->Size = System::Drawing::Size(458, 296);
+			this->tabControl1->TabIndex = 0;
 			// 
-			// button1
+			// tabPage1
 			// 
-			this->button1->Location = System::Drawing::Point(369, 111);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->tabPage1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->tabPage1->Controls->Add(this->cmbx_NatNum_Ordenamientos);
+			this->tabPage1->Controls->Add(this->btn_NatNum_OrdenarPokemones);
+			this->tabPage1->Controls->Add(this->lbx_NatNum_Ordenados);
+			this->tabPage1->Controls->Add(this->lbx_NatNum_Desordenados);
+			this->tabPage1->Location = System::Drawing::Point(4, 22);
+			this->tabPage1->Name = L"tabPage1";
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage1->Size = System::Drawing::Size(450, 270);
+			this->tabPage1->TabIndex = 0;
+			this->tabPage1->Text = L"National Number";
 			// 
-			// timer1
+			// cmbx_NatNum_Ordenamientos
 			// 
-			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::TIMER_Tick);
+			this->cmbx_NatNum_Ordenamientos->FormattingEnabled = true;
+			this->cmbx_NatNum_Ordenamientos->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
+				L"Selection Sort", L"Quick Sort",
+					L"Shell Sort"
+			});
+			this->cmbx_NatNum_Ordenamientos->Location = System::Drawing::Point(319, 6);
+			this->cmbx_NatNum_Ordenamientos->Name = L"cmbx_NatNum_Ordenamientos";
+			this->cmbx_NatNum_Ordenamientos->Size = System::Drawing::Size(125, 21);
+			this->cmbx_NatNum_Ordenamientos->TabIndex = 4;
+			// 
+			// btn_NatNum_OrdenarPokemones
+			// 
+			this->btn_NatNum_OrdenarPokemones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btn_NatNum_OrdenarPokemones->Location = System::Drawing::Point(318, 94);
+			this->btn_NatNum_OrdenarPokemones->Name = L"btn_NatNum_OrdenarPokemones";
+			this->btn_NatNum_OrdenarPokemones->Size = System::Drawing::Size(126, 163);
+			this->btn_NatNum_OrdenarPokemones->TabIndex = 3;
+			this->btn_NatNum_OrdenarPokemones->Text = L"Cargar Pokemones";
+			this->btn_NatNum_OrdenarPokemones->UseVisualStyleBackColor = true;
+			this->btn_NatNum_OrdenarPokemones->Click += gcnew System::EventHandler(this, &MyForm::btn_NatNum_CargarPokemones_Click);
+			// 
+			// lbx_NatNum_Ordenados
+			// 
+			this->lbx_NatNum_Ordenados->FormattingEnabled = true;
+			this->lbx_NatNum_Ordenados->Location = System::Drawing::Point(159, 6);
+			this->lbx_NatNum_Ordenados->Name = L"lbx_NatNum_Ordenados";
+			this->lbx_NatNum_Ordenados->Size = System::Drawing::Size(138, 251);
+			this->lbx_NatNum_Ordenados->TabIndex = 2;
+			// 
+			// lbx_NatNum_Desordenados
+			// 
+			this->lbx_NatNum_Desordenados->FormattingEnabled = true;
+			this->lbx_NatNum_Desordenados->Location = System::Drawing::Point(6, 6);
+			this->lbx_NatNum_Desordenados->Name = L"lbx_NatNum_Desordenados";
+			this->lbx_NatNum_Desordenados->Size = System::Drawing::Size(138, 251);
+			this->lbx_NatNum_Desordenados->TabIndex = 1;
+			// 
+			// tabPage2
+			// 
+			this->tabPage2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->tabPage2->Controls->Add(this->cmbx_Generacion_Ordenamientos);
+			this->tabPage2->Controls->Add(this->btn_Generacion_OrdenarPokemones);
+			this->tabPage2->Controls->Add(this->lbx_Generacion_Ordenados);
+			this->tabPage2->Controls->Add(this->lbx_Generacion_Desordenados);
+			this->tabPage2->Location = System::Drawing::Point(4, 22);
+			this->tabPage2->Name = L"tabPage2";
+			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage2->Size = System::Drawing::Size(450, 270);
+			this->tabPage2->TabIndex = 1;
+			this->tabPage2->Text = L"Generación";
+			// 
+			// cmbx_Generacion_Ordenamientos
+			// 
+			this->cmbx_Generacion_Ordenamientos->FormattingEnabled = true;
+			this->cmbx_Generacion_Ordenamientos->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
+				L"Selection Sort", L"Quick Sort",
+					L"Shell Sort"
+			});
+			this->cmbx_Generacion_Ordenamientos->Location = System::Drawing::Point(319, 7);
+			this->cmbx_Generacion_Ordenamientos->Name = L"cmbx_Generacion_Ordenamientos";
+			this->cmbx_Generacion_Ordenamientos->Size = System::Drawing::Size(125, 21);
+			this->cmbx_Generacion_Ordenamientos->TabIndex = 3;
+			// 
+			// btn_Generacion_OrdenarPokemones
+			// 
+			this->btn_Generacion_OrdenarPokemones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btn_Generacion_OrdenarPokemones->Location = System::Drawing::Point(318, 81);
+			this->btn_Generacion_OrdenarPokemones->Name = L"btn_Generacion_OrdenarPokemones";
+			this->btn_Generacion_OrdenarPokemones->Size = System::Drawing::Size(126, 177);
+			this->btn_Generacion_OrdenarPokemones->TabIndex = 2;
+			this->btn_Generacion_OrdenarPokemones->Text = L"Ordenar Pokemones";
+			this->btn_Generacion_OrdenarPokemones->UseVisualStyleBackColor = true;
+			// 
+			// lbx_Generacion_Ordenados
+			// 
+			this->lbx_Generacion_Ordenados->FormattingEnabled = true;
+			this->lbx_Generacion_Ordenados->Location = System::Drawing::Point(162, 7);
+			this->lbx_Generacion_Ordenados->Name = L"lbx_Generacion_Ordenados";
+			this->lbx_Generacion_Ordenados->Size = System::Drawing::Size(138, 251);
+			this->lbx_Generacion_Ordenados->TabIndex = 1;
+			// 
+			// lbx_Generacion_Desordenados
+			// 
+			this->lbx_Generacion_Desordenados->FormattingEnabled = true;
+			this->lbx_Generacion_Desordenados->Location = System::Drawing::Point(7, 7);
+			this->lbx_Generacion_Desordenados->Name = L"lbx_Generacion_Desordenados";
+			this->lbx_Generacion_Desordenados->Size = System::Drawing::Size(138, 251);
+			this->lbx_Generacion_Desordenados->TabIndex = 0;
+			// 
+			// label2
+			// 
+			this->label2->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::Goldenrod;
+			this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->label2->Font = (gcnew System::Drawing::Font(L"MV Boli", 21.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::Color::Aqua;
+			this->label2->Location = System::Drawing::Point(152, 11);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 2, 2, 5);
+			this->label2->Name = L"label2";
+			this->label2->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->label2->Size = System::Drawing::Size(161, 41);
+			this->label2->TabIndex = 2;
+			this->label2->Text = L"POKÉDEX";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(764, 587);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->listBox1);
-			this->Margin = System::Windows::Forms::Padding(4);
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->ClientSize = System::Drawing::Size(485, 381);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->tabControl1);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"POKEDEX";
+			this->tabControl1->ResumeLayout(false);
+			this->tabPage1->ResumeLayout(false);
+			this->tabPage2->ResumeLayout(false);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 
-		int conteo = 0;
 
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		ifstream archivo(Nombre_Archivo);
-		string NatNum, Name, Gen;
-		string linea;
-		char limite = ',';
-
-		double VecNationalNumber[80];
-		string VecName[80];
-		double VecGen[80];
-
-		while (getline(archivo, linea)) {
-			stringstream stream(linea);
-			getline(stream, NatNum, limite);
-			getline(stream, Name, limite);
-			getline(stream, Gen, limite);
-
-			listBox1->Items->Add(ToSystemString(NatNum) + ", " + ToSystemString(Name) + ", " + ToSystemString(Gen));
-		}
-
-	}
 
 	private: static string ToNormalString(System::String^ string) {
 		using System::Runtime::InteropServices::Marshal;
@@ -151,9 +289,56 @@ namespace Lab05JorgeLeiva1249821 {
 		return gcnew String(str.c_str());
 	}
 
-	private: System::Void TIMER_Tick(System::Object^ sender, System::EventArgs^ e) {
-		conteo++;
+	private: System::Void btn_NatNum_CargarPokemones_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		ifstream archivo(Nombre_Archivo);
+		string NatNum, Name, Gen;
+		string linea;
+		char limite = ',';
+		int contador = 0;
+
+		int opcion = cmbx_NatNum_Ordenamientos->SelectedIndex;
+
+		switch (opcion)
+		{
+		case 0:
+		{
+
+			double VecNationalNumber[80];
+			string VecName[80];
+			double VecGen[80];
+
+			while (getline(archivo, linea)) {
+				stringstream stream(linea);
+				getline(stream, NatNum, limite);
+				getline(stream, Name, limite);
+				getline(stream, Gen, limite);
+
+				lbx_NatNum_Desordenados->Items->Add(ToSystemString(NatNum) + ", " + ToSystemString(Name) + ", " + ToSystemString(Gen));
+
+
+			}
+			archivo.close();
+
+		}break;
+
+		case 1:
+		{
+
+		}break;
+
+		case 2:
+		{
+
+		}break;
+
+		default:
+		{
+			MessageBox::Show("Seleccione una opción correcta");
+		}
+			break;
+		}
 
 	}
-	};
+};
 }
