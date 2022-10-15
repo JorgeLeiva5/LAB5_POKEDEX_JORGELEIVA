@@ -1,10 +1,9 @@
 #pragma once
 #include<vector>
 using namespace std;
-#include"Pokemon.h"
-#include"MyForm.h"
+#include"POKEMON.h"
 
-Orden* POKEMON = new Orden;
+Orden* ORDEN = new Orden;
 
 void Orden::SelectionSort(double v[], int n) {
     int indice_menor;

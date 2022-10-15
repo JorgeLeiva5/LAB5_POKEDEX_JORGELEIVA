@@ -11,6 +11,7 @@
 #include <vector>
 #include <msclr/marshal.h>
 
+#include "POKEMON.h"
 #define Nombre_Archivo "POKEDEX.csv"
 
 namespace Lab05JorgeLeiva1249821 {
@@ -65,7 +66,7 @@ namespace Lab05JorgeLeiva1249821 {
 
 
 	private: System::Windows::Forms::ListBox^ lbx_NatNum_Desordenados;
-	private: System::Windows::Forms::Button^ btn_NatNum_OrdenarPokemones;
+
 
 
 
@@ -73,6 +74,7 @@ namespace Lab05JorgeLeiva1249821 {
 	private: System::Windows::Forms::ComboBox^ cmbx_NatNum_Ordenamientos;
 
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Button^ btn_NatNum_OrdenarPokemones;
 
 
 
@@ -104,7 +106,6 @@ namespace Lab05JorgeLeiva1249821 {
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->cmbx_NatNum_Ordenamientos = (gcnew System::Windows::Forms::ComboBox());
-			this->btn_NatNum_OrdenarPokemones = (gcnew System::Windows::Forms::Button());
 			this->lbx_NatNum_Ordenados = (gcnew System::Windows::Forms::ListBox());
 			this->lbx_NatNum_Desordenados = (gcnew System::Windows::Forms::ListBox());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
@@ -113,6 +114,7 @@ namespace Lab05JorgeLeiva1249821 {
 			this->lbx_Generacion_Ordenados = (gcnew System::Windows::Forms::ListBox());
 			this->lbx_Generacion_Desordenados = (gcnew System::Windows::Forms::ListBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->btn_NatNum_OrdenarPokemones = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
@@ -132,8 +134,8 @@ namespace Lab05JorgeLeiva1249821 {
 			// 
 			this->tabPage1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->tabPage1->Controls->Add(this->cmbx_NatNum_Ordenamientos);
 			this->tabPage1->Controls->Add(this->btn_NatNum_OrdenarPokemones);
+			this->tabPage1->Controls->Add(this->cmbx_NatNum_Ordenamientos);
 			this->tabPage1->Controls->Add(this->lbx_NatNum_Ordenados);
 			this->tabPage1->Controls->Add(this->lbx_NatNum_Desordenados);
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
@@ -154,18 +156,6 @@ namespace Lab05JorgeLeiva1249821 {
 			this->cmbx_NatNum_Ordenamientos->Name = L"cmbx_NatNum_Ordenamientos";
 			this->cmbx_NatNum_Ordenamientos->Size = System::Drawing::Size(125, 21);
 			this->cmbx_NatNum_Ordenamientos->TabIndex = 4;
-			// 
-			// btn_NatNum_OrdenarPokemones
-			// 
-			this->btn_NatNum_OrdenarPokemones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btn_NatNum_OrdenarPokemones->Location = System::Drawing::Point(318, 94);
-			this->btn_NatNum_OrdenarPokemones->Name = L"btn_NatNum_OrdenarPokemones";
-			this->btn_NatNum_OrdenarPokemones->Size = System::Drawing::Size(126, 163);
-			this->btn_NatNum_OrdenarPokemones->TabIndex = 3;
-			this->btn_NatNum_OrdenarPokemones->Text = L"Cargar Pokemones";
-			this->btn_NatNum_OrdenarPokemones->UseVisualStyleBackColor = true;
-			this->btn_NatNum_OrdenarPokemones->Click += gcnew System::EventHandler(this, &MyForm::btn_NatNum_CargarPokemones_Click);
 			// 
 			// lbx_NatNum_Ordenados
 			// 
@@ -255,6 +245,18 @@ namespace Lab05JorgeLeiva1249821 {
 			this->label2->Text = L"POKÉDEX";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
+			// btn_NatNum_OrdenarPokemones
+			// 
+			this->btn_NatNum_OrdenarPokemones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btn_NatNum_OrdenarPokemones->Location = System::Drawing::Point(318, 80);
+			this->btn_NatNum_OrdenarPokemones->Name = L"btn_NatNum_OrdenarPokemones";
+			this->btn_NatNum_OrdenarPokemones->Size = System::Drawing::Size(126, 177);
+			this->btn_NatNum_OrdenarPokemones->TabIndex = 5;
+			this->btn_NatNum_OrdenarPokemones->Text = L"Ordenar Pokemones";
+			this->btn_NatNum_OrdenarPokemones->UseVisualStyleBackColor = true;
+			this->btn_NatNum_OrdenarPokemones->Click += gcnew System::EventHandler(this, &MyForm::btn_NatNum_OrdenarPokemones_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -274,7 +276,7 @@ namespace Lab05JorgeLeiva1249821 {
 		}
 #pragma endregion
 
-
+		Orden* ORDEN = new Orden;
 
 	private: static string ToNormalString(System::String^ string) {
 		using System::Runtime::InteropServices::Marshal;
@@ -288,14 +290,13 @@ namespace Lab05JorgeLeiva1249821 {
 	private: static String^ ToSystemString(string str) {
 		return gcnew String(str.c_str());
 	}
-
-	private: System::Void btn_NatNum_CargarPokemones_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btn_NatNum_OrdenarPokemones_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		ifstream archivo(Nombre_Archivo);
 		string NatNum, Name, Gen;
 		string linea;
 		char limite = ',';
-		int contador = 0;
+		int cont = 0;
 
 		int opcion = cmbx_NatNum_Ordenamientos->SelectedIndex;
 
@@ -303,32 +304,96 @@ namespace Lab05JorgeLeiva1249821 {
 		{
 		case 0:
 		{
-
 			double VecNationalNumber[80];
 			string VecName[80];
 			double VecGen[80];
 
-			while (getline(archivo, linea)) {
+			lbx_NatNum_Desordenados->Items->Clear();
+			lbx_NatNum_Ordenados->Items->Clear();
+			while (getline(archivo, linea))
+			{
 				stringstream stream(linea);
 				getline(stream, NatNum, limite);
 				getline(stream, Name, limite);
 				getline(stream, Gen, limite);
 
 				lbx_NatNum_Desordenados->Items->Add(ToSystemString(NatNum) + ", " + ToSystemString(Name) + ", " + ToSystemString(Gen));
-
-
+				VecNationalNumber[cont] = Convert::ToDouble(ToSystemString(NatNum));
+				VecName[cont] = Name;
+				VecGen[cont] = Convert::ToDouble(ToSystemString(Gen));
+				cont++;
 			}
 			archivo.close();
+			ORDEN->SelectionSort(VecNationalNumber, cont);
+			ORDEN->SelectionSort(VecGen, cont);
+
+			for (int i = 0; i < cont; i++)
+			{
+				lbx_NatNum_Ordenados->Items->Add(VecNationalNumber[i] + ", " + ToSystemString(VecName[i]) + ", " + VecGen[i]);
+			}
 
 		}break;
 
 		case 1:
 		{
+			double VecNationalNumber[80];
+			string VecName[80];
+			double VecGen[80];
+
+			lbx_NatNum_Desordenados->Items->Clear();
+			lbx_NatNum_Ordenados->Items->Clear();
+			while (getline(archivo, linea))
+			{
+				stringstream stream(linea);
+				getline(stream, NatNum, limite);
+				getline(stream, Name, limite);
+				getline(stream, Gen, limite);
+
+				lbx_NatNum_Desordenados->Items->Add(ToSystemString(NatNum) + ", " + ToSystemString(Name) + ", " + ToSystemString(Gen));
+				VecNationalNumber[cont] = Convert::ToDouble(ToSystemString(NatNum));
+				VecName[cont] = Name;
+				VecGen[cont] = Convert::ToDouble(ToSystemString(Gen));
+				cont++;
+			}
+			archivo.close();
+			ORDEN->QuickSort(VecNationalNumber, 0, cont-1);
+			ORDEN->QuickSort(VecGen, 0, cont-1);
+
+			for (int i = 0; i < cont; i++)
+			{
+				lbx_NatNum_Ordenados->Items->Add(VecNationalNumber[i] + ", " + ToSystemString(VecName[i]) + ", " + VecGen[i]);
+			}
 
 		}break;
 
 		case 2:
 		{
+			double VecNationalNumber[80];
+			string VecName[80];
+			double VecGen[80];
+
+			lbx_NatNum_Desordenados->Items->Clear();
+			lbx_NatNum_Ordenados->Items->Clear();
+			while (getline(archivo, linea))
+			{
+				stringstream stream(linea);
+				getline(stream, NatNum, limite);
+				getline(stream, Name, limite);
+				getline(stream, Gen, limite);
+
+				lbx_NatNum_Desordenados->Items->Add(ToSystemString(NatNum) + ", " + ToSystemString(Name) + ", " + ToSystemString(Gen));
+				VecNationalNumber[cont] = Convert::ToDouble(ToSystemString(NatNum));
+				VecName[cont] = Name;
+				VecGen[cont] = Convert::ToDouble(ToSystemString(Gen));
+				cont++;
+			}
+			archivo.close();
+			ORDEN->ShellSort(VecNationalNumber, cont);
+			ORDEN->ShellSort(VecGen, cont);
+			for (int i = 0; i < cont; i++)
+			{
+				lbx_NatNum_Ordenados->Items->Add(VecNationalNumber[i] + ", " + ToSystemString(VecName[i]) + ", " + VecGen[i]);
+			}
 
 		}break;
 
@@ -336,7 +401,7 @@ namespace Lab05JorgeLeiva1249821 {
 		{
 			MessageBox::Show("Seleccione una opción correcta");
 		}
-			break;
+		break;
 		}
 
 	}
